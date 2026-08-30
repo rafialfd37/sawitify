@@ -5,7 +5,7 @@
 ### Sistem Informasi Operasional Lapangan Perkebunan Kelapa Sawit
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Visit_Site-success?style=for-the-badge)](https://sawitify.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/rafialfd/sawitify)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/rafialfd37/sawitify)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 **Submission for ITECHNO CUP 2026 – Web Development**
@@ -36,8 +36,8 @@
 
 | Nama                        | Peran                | GitHub                                   |
 | --------------------------- | -------------------- | ---------------------------------------- |
-| **Mikael Abe Christanto**   | Ketua Tim            | -                                        |
-| **Muhammad Rafi Alfirdaus** | Full Stack Developer | [@rafialfd](https://github.com/rafialfd) |
+| **Mikael Abe Christanto**   | Ketua Tim            | [@MikAbCh](https://github.com/MikAbCh/)  |
+| **Muhammad Rafi Alfirdaus** | Full Stack Developer | [@rafialfd37](https://github.com/rafialfd37) |
 
 ---
 
@@ -47,9 +47,7 @@
 
 Operasional perkebunan kelapa sawit melibatkan koordinasi antara **mandor** dan **pemanen** dalam pembagian area kerja (ancak), pencatatan hasil panen, serta pelaporan brondolan setiap hari.
 
-Pada banyak kondisi, proses tersebut masih dilakukan secara **manual menggunakan kertas atau pencatatan terpisah**, sehingga berpotensi menimbulkan keterlambatan pelaporan, duplikasi data, kesalahan pencatatan, dan kesulitan melakukan monitoring secara real-time.
-
-Permasalahan tersebut menghambat efisiensi operasional dan memperlambat pengambilan keputusan di lapangan.
+Pada sebagian banyak kasus, proses tersebut masih dilakukan secara **manual menggunakan kertas atau pencatatan terpisah**, sehingga berpotensi menimbulkan keterlambatan pelaporan, duplikasi data, kesalahan pencatatan, dan kesulitan melakukan monitoring secara real-time yang pada akhirnya menghambat efisiensi operasional dan memperlambat pengambilan keputusan di lapangan.
 
 ### Solusi yang Ditawarkan
 
@@ -278,7 +276,7 @@ Pastikan telah menginstal atau memiliki:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/rafialfd/sawitify.git
+git clone https://github.com/rafialfd37/sawitify.git
 cd sawitify
 ```
 
