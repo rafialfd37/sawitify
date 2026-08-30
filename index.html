@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sawitify - Masuk ke Akun Anda</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta name="theme-color" content="#087f23" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Sawitify" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="brand-header">
+        <!-- Ikon Daun Kelapa Sawit -->
+        <div class="brand-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M17,8C15.9,8 14.88,8.22 13.92,8.61L12,2L10.08,8.61C9.12,8.22 8.1,8 7,8C3.13,8 0,11.13 0,15C0,18.87 3.13,22 7,22C8.1,22 9.12,21.78 10.08,21.39L12,28L13.92,21.39C14.88,21.78 15.9,22 17,22C20.87,22 24,18.87 24,15C24,11.13 20.87,8 17,8Z"
+            />
+          </svg>
+        </div>
+        <h1 class="brand-title">Sawitify</h1>
+        <p class="brand-subtitle">
+          Sistem Informasi Operasional Lapangan Sawit
+        </p>
+      </div>
+
+      <div class="form">
+        <div class="form-group">
+          <label for="username">ID Pengguna</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Contoh: M0123"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Kata Sandi</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-login" onclick="handlerLogin()">
+          Masuk ke Sawitify
+        </button>
+      </div>
+
+      <div class="login-footer">
+        Belum memiliki akun atau lupa kata sandi? <a href="#">Hubungi Admin</a>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
+  </body>
+</html>

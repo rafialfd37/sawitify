@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sawitify - Mandor</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta name="theme-color" content="#087f23" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Sawitify" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <style>
+      :root {
+        --primary: #2e7d32;
+        --primary-dark: #1b5e20;
+        --primary-light: #e8f5e9;
+        --bg-body: #f4f6f9;
+        --card-bg: #ffffff;
+        --text-main: #333333;
+        --text-muted: #666666;
+        --border: #e0e0e0;
+        --danger: #d32f2f;
+        --warning: #f57c00;
+        --success: #2e7d32;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--bg-body);
+        color: var(--text-main);
+      }
+
+      button,
+      input,
+      select {
+        font-family: inherit;
+      }
+
+      /* =========================
+       HEADER
+    ========================= */
+
+      header {
+        width: 100%;
+
+        background: white;
+
+        border-bottom: 1px solid #ddd;
+
+        margin-bottom: 25px;
+      }
+
+      .header-inner {
+        width: 100%;
+
+        margin: 0 auto;
+
+        padding: 15px 20px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+      }
+
+      /* =========================
+   BRAND + LOGO
+========================= */
+
+      .brand {
+        display: flex;
+
+        align-items: center;
+
+        gap: 9px;
+      }
+
+      .brand svg {
+        width: 25px;
+
+        height: 25px;
+
+        fill: #087f23;
+
+        flex-shrink: 0;
+      }
+
+      .brand-text {
+        display: flex;
+
+        flex-direction: column;
+      }
+
+      .brand h1 {
+        margin: 0;
+
+        font-size: 22px;
+
+        color: #087f23;
+      }
+
+      .brand p {
+        margin: 3px 0 0;
+
+        color: #777;
+
+        font-size: 11px;
+      }
+
+      /* =========================
+   USER
+========================= */
+
+      .user {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+      }
+
+      .user-info {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: flex-end;
+      }
+
+      .user-info strong {
+        font-size: 13px;
+      }
+
+      .user-info span {
+        margin-top: 2px;
+
+        font-size: 10px;
+
+        color: #777;
+      }
+
+      /* =========================
+   LOGOUT
+========================= */
+
+      .btn-logout {
+        border: 1px solid #ddd;
+
+        background: white;
+
+        border-radius: 7px;
+
+        padding: 8px 12px;
+
+        cursor: pointer;
+
+        color: #d33;
+
+        font-size: 11px;
+      }
+
+      .btn-logout:hover {
+        background: #fafafa;
+      }
+
+      /* =========================
+       MAIN
+    ========================= */
+
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px;
+      }
+
+      .page-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 22px;
+      }
+
+      .page-header h2 {
+        margin: 0;
+        font-size: 21px;
+      }
+
+      .page-header p {
+        margin: 5px 0 0;
+
+        color: var(--text-muted);
+        font-size: 13px;
+      }
+
+      /* =========================
+       ADD BUTTON
+    ========================= */
+
+      .btn-add {
+        border: none;
+
+        background: var(--primary);
+        color: white;
+
+        padding: 11px 17px;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .btn-add:hover {
+        background: var(--primary-dark);
+      }
+
+      /* =========================
+       ASSIGNMENT LIST
+    ========================= */
+
+      .assignment-list {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 16px;
+      }
+
+      .assignment-card {
+        background: var(--card-bg);
+
+        border: 1px solid var(--border);
+        border-radius: 12px;
+
+        padding: 20px;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+      }
+
+      .assignment-card:hover {
+        border-color: var(--primary);
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .assignment-top {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .foto-section {
+        margin-top: 12px;
+      }
+
+      .foto-section span {
+        display: block;
+        font-size: 11px;
+        color: #666;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 8px;
+      }
+
+      .photo-thumb {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .photo-thumb:hover {
+        transform: scale(1.04);
+      }
+
+      .no-photo {
+        padding: 10px;
+        border: 1px dashed #ddd;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+      }
+
+      .catatan-box {
+        margin-top: 12px;
+        padding: 10px;
+        background: #fafafa;
+        border: 1px solid #eee;
+        border-radius: 8px;
+      }
+
+      .catatan-box span {
+        display: block;
+        font-size: 11px;
+        color: #666;
+        margin-bottom: 4px;
+      }
+
+      .catatan-box p {
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .date-icon {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: var(--primary-light);
+
+        border-radius: 9px;
+
+        font-size: 19px;
+      }
+
+      .assignment-date {
+        color: var(--text-muted);
+
+        font-size: 12px;
+      }
+
+      .assignment-card h3 {
+        margin: 17px 0 5px;
+
+        font-size: 17px;
+      }
+
+      .assignment-card > p {
+        margin: 0;
+
+        color: var(--text-muted);
+
+        font-size: 13px;
+      }
+
+      .assignment-summary {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 8px;
+
+        margin-top: 18px;
+      }
+
+      .summary-item {
+        background: #fafafa;
+
+        border: 1px solid var(--border);
+
+        border-radius: 7px;
+
+        padding: 9px;
+      }
+
+      .summary-item span {
+        display: block;
+
+        color: var(--text-muted);
+
+        font-size: 10px;
+      }
+
+      .summary-item strong {
+        display: block;
+
+        margin-top: 4px;
+
+        font-size: 13px;
+      }
+
+      /* =========================
+   MONTHLY REPORT
+========================= */
+
+      .report-info {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .report-info div {
+        flex: 1;
+        min-width: 140px;
+      }
+
+      .report-info span {
+        display: block;
+        font-size: 11px;
+        color: #777;
+        margin-bottom: 4px;
+      }
+
+      .report-info strong {
+        font-size: 15px;
+      }
+
+      .report-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+      }
+
+      .signature-box {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 35px;
+      }
+
+      .signature {
+        text-align: center;
+        width: 220px;
+      }
+
+      .signature p {
+        margin-bottom: 60px;
+        font-size: 13px;
+      }
+
+      .signature .line {
+        border-top: 2px solid #333;
+        margin-bottom: 8px;
+      }
+
+      /* =========================
+   PRINT ONLY REPORT
+========================= */
+
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+
+        #reportModal,
+        #reportModal * {
+          visibility: visible;
+        }
+
+        #reportModal {
+          position: absolute;
+          inset: 0;
+          background: white;
+          display: block !important;
+        }
+
+        #reportModal .modal-content {
+          max-width: none !important;
+          width: 100%;
+          max-height: none;
+          overflow: visible;
+          border-radius: 0;
+          box-shadow: none;
+          padding: 25px;
+        }
+
+        .close,
+        .report-actions {
+          display: none !important;
+        }
+
+        .performance-table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        .performance-table th,
+        .performance-table td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          font-size: 12px;
+        }
+
+        .performance-summary {
+          margin: 20px 0;
+        }
+
+        .summary-card {
+          border: 1px solid #ddd;
+        }
+
+        @page {
+          size: A4 portrait;
+          margin: 15mm;
+        }
+      }
+
+      .assignment-footer {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        border-top: 1px solid var(--border);
+
+        margin-top: 18px;
+        padding-top: 13px;
+
+        color: var(--primary);
+
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      .btn-edit {
+        flex: 1;
+        border: none;
+        background: #f59e0b;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .btn-delete {
+        flex: 1;
+        border: none;
+        background: #dc2626;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .signature-box {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 40px;
+      }
+
+      .signature {
+        text-align: center;
+        width: 220px;
+      }
+
+      .signature p {
+        margin-bottom: 55px;
+        font-size: 13px;
+      }
+
+      .signature .line {
+        border-top: 2px solid #333;
+        margin-bottom: 8px;
+      }
+
+      @media print {
+        header,
+        .page-header,
+        .btn-add,
+        .performance-section {
+          display: none;
+        }
+
+        body {
+          background: white;
+        }
+
+        main {
+          max-width: none;
+          padding: 0;
+        }
+
+        .report-section {
+          display: block;
+        }
+
+        .performance-table {
+          font-size: 11px;
+        }
+      }
+
+      /* =========================
+       MODAL
+    ========================= */
+
+      .modal {
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.45);
+
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px;
+
+        z-index: 1000;
+      }
+
+      .modal.show {
+        display: flex;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-width: 750px;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+
+        background: white;
+
+        border-radius: 14px;
+
+        padding: 25px;
+      }
+
+      .modal-header {
+        display: flex;
+
+        align-items: flex-start;
+        justify-content: space-between;
+
+        margin-bottom: 22px;
+      }
+
+      .modal-header h2 {
+        margin: 0 0 5px;
+
+        font-size: 20px;
+      }
+
+      .modal-header p {
+        margin: 0;
+
+        color: var(--text-muted);
+
+        font-size: 13px;
+      }
+
+      .close {
+        width: 32px;
+        height: 32px;
+
+        border: none;
+        border-radius: 50%;
+
+        background: #f1f1f1;
+
+        cursor: pointer;
+
+        font-size: 18px;
+      }
+
+      /* =========================
+       HARVESTER CARD
+    ========================= */
+
+      .worker-card {
+        border: 1px solid var(--border);
+
+        border-radius: 10px;
+
+        padding: 16px;
+
+        margin-bottom: 12px;
+      }
+
+      .worker-header {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+      }
+
+      .worker-avatar {
+        width: 42px;
+        height: 42px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: var(--primary-light);
+
+        color: var(--primary-dark);
+
+        font-weight: bold;
+      }
+
+      .worker-name {
+        flex: 1;
+      }
+
+      .worker-name strong {
+        display: block;
+
+        font-size: 14px;
+      }
+
+      .worker-name span {
+        display: block;
+
+        margin-top: 4px;
+
+        color: var(--text-muted);
+
+        font-size: 11px;
+      }
+
+      /* STATUS */
+
+      .status {
+        padding: 5px 9px;
+
+        border-radius: 20px;
+
+        font-size: 10px;
+
+        font-weight: bold;
+      }
+
+      .status.done {
+        background: var(--primary-light);
+
+        color: var(--primary-dark);
+      }
+
+      .status.progress {
+        background: #fff3e0;
+
+        color: var(--warning);
+      }
+
+      .status.pending {
+        background: #eeeeee;
+
+        color: var(--text-muted);
+      }
+
+      /* HARVEST DATA */
+
+      .worker-data {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+
+        margin-top: 15px;
+      }
+
+      .data-box {
+        background: #fafafa;
+
+        border-radius: 7px;
+
+        padding: 10px;
+      }
+
+      .data-box span {
+        display: block;
+
+        color: var(--text-muted);
+
+        font-size: 10px;
+      }
+
+      .data-box strong {
+        display: block;
+
+        margin-top: 4px;
+
+        font-size: 14px;
+      }
+
+      /* =========================
+       ANCAK LIST
+    ========================= */
+
+      .ancak-section {
+        margin-top: 14px;
+
+        padding-top: 13px;
+
+        border-top: 1px solid var(--border);
+      }
+
+      .ancak-section-title {
+        display: block;
+
+        margin-bottom: 8px;
+
+        color: var(--text-muted);
+
+        font-size: 11px;
+
+        font-weight: bold;
+      }
+
+      .ancak-list {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 6px;
+      }
+
+      .ancak {
+        padding: 6px 9px;
+
+        background: var(--primary-light);
+
+        color: var(--primary-dark);
+
+        border-radius: 6px;
+
+        font-size: 11px;
+
+        font-weight: bold;
+      }
+
+      /* =========================
+       FORM
+    ========================= */
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group > label {
+        display: block;
+
+        margin-bottom: 7px;
+
+        font-size: 13px;
+
+        font-weight: bold;
+      }
+
+      .form-group input {
+        width: 100%;
+
+        padding: 11px 12px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 7px;
+
+        outline: none;
+      }
+
+      .form-group input:focus {
+        border-color: var(--primary);
+      }
+
+      /* =========================
+       WORKER FORM
+    ========================= */
+
+      .worker-form {
+        border: 1px solid var(--border);
+
+        border-radius: 10px;
+
+        padding: 15px;
+
+        margin-bottom: 12px;
+      }
+
+      .worker-form-header {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 12px;
+      }
+
+      .worker-form-header strong {
+        font-size: 13px;
+      }
+
+      .btn-remove-worker {
+        border: none;
+
+        background: transparent;
+
+        color: var(--danger);
+
+        cursor: pointer;
+
+        font-size: 18px;
+      }
+
+      .worker-select {
+        margin-bottom: 12px;
+      }
+
+      .worker-select label {
+        display: block;
+
+        margin-bottom: 6px;
+
+        color: var(--text-muted);
+
+        font-size: 11px;
+      }
+
+      .worker-select select {
+        width: 100%;
+
+        padding: 10px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 7px;
+
+        background: white;
+      }
+
+      /* =========================
+       MULTI ANCAK
+    ========================= */
+
+      .ancak-select-title {
+        margin-bottom: 8px;
+
+        color: var(--text-muted);
+
+        font-size: 11px;
+      }
+
+      .ancak-options {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 7px;
+      }
+
+      .ancak-option {
+        position: relative;
+      }
+
+      .ancak-option input {
+        position: absolute;
+
+        opacity: 0;
+
+        pointer-events: none;
+      }
+
+      .ancak-option label {
+        display: block;
+
+        padding: 7px 11px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 6px;
+
+        color: var(--text-main);
+
+        background: white;
+
+        cursor: pointer;
+
+        font-size: 11px;
+      }
+
+      .ancak-option input:checked + label {
+        background: var(--primary);
+
+        border-color: var(--primary);
+
+        color: white;
+      }
+
+      /* =========================
+       ADD WORKER
+    ========================= */
+
+      .btn-add-worker {
+        width: 100%;
+
+        padding: 10px;
+
+        border: 1px dashed var(--primary);
+
+        border-radius: 7px;
+
+        background: var(--primary-light);
+
+        color: var(--primary-dark);
+
+        cursor: pointer;
+
+        font-weight: bold;
+
+        font-size: 13px;
+      }
+
+      /* =========================
+       SUBMIT
+    ========================= */
+
+      .btn-submit {
+        width: 100%;
+
+        margin-top: 18px;
+
+        padding: 12px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: var(--primary);
+
+        color: white;
+
+        cursor: pointer;
+
+        font-weight: bold;
+      }
+
+      .btn-submit:hover {
+        background: var(--primary-dark);
+      }
+
+      /* =========================
+   PERFORMANCE DASHBOARD
+========================= */
+
+      .performance-section {
+        margin-bottom: 35px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+      .performance-filters {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .performance-filters input,
+      .performance-filters select {
+        padding: 9px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: white;
+        font-size: 12px;
+      }
+
+      .performance-filters select {
+        min-width: 170px;
+      }
+
+      @media (max-width: 700px) {
+        .performance-filters {
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .performance-filters select {
+          min-width: 100%;
+        }
+      }
+      .section-header h2 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .section-header p {
+        margin: 4px 0 0;
+        color: var(--text-muted);
+        font-size: 12px;
+      }
+
+      .section-header input[type="month"] {
+        padding: 9px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: white;
+        font-size: 12px;
+      }
+
+      .performance-summary {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .summary-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 15px;
+      }
+
+      .summary-card span {
+        display: block;
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+      }
+
+      .summary-card strong {
+        font-size: 22px;
+      }
+
+      .performance-table-wrapper {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .performance-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .performance-table th {
+        background: #f8f8f8;
+        padding: 12px;
+        font-size: 11px;
+        text-align: left;
+      }
+
+      .performance-table td {
+        padding: 14px 12px;
+        border-top: 1px solid var(--border);
+        font-size: 13px;
+      }
+
+      .rank {
+        width: 40px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .rank.gold {
+        color: #b8860b;
+      }
+
+      .rank.silver {
+        color: #757575;
+      }
+
+      .rank.bronze {
+        color: #8b5a2b;
+      }
+
+      /* =========================
+       RESPONSIVE
+    ========================= */
+
+      @media (max-width: 700px) {
+        header {
+          padding: 15px 18px;
+        }
+
+        main {
+          padding: 20px 15px;
+        }
+
+        .assignment-list {
+          grid-template-columns: 1fr;
+        }
+
+        .user-info {
+          display: none;
+        }
+
+        .page-header {
+          gap: 12px;
+        }
+
+        .page-header h2 {
+          font-size: 18px;
+        }
+
+        .btn-add {
+          width: 42px;
+          height: 42px;
+
+          padding: 0;
+
+          border-radius: 50%;
+
+          font-size: 22px;
+        }
+
+        .btn-add span {
+          display: none;
+        }
+
+        .modal-content {
+          padding: 20px;
+        }
+      }
+
+      @media (max-width: 450px) {
+        .worker-header {
+          align-items: flex-start;
+        }
+
+        .worker-data {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .status {
+          font-size: 9px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================
+       HEADER
+  ========================= -->
+
+    <header>
+      <div class="header-inner">
+        <div class="brand">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              d="M17,8C15.9,8 14.88,8.22 13.92,8.61L12,2L10.08,8.61C9.12,8.22 8.1,8 7,8C3.13,8 0,11.13 0,15C0,18.87 3.13,22 7,22C8.1,22 9.12,21.78 10.08,21.39L12,28L13.92,21.39C14.88,21.78 15.9,22 17,22C20.87,22 24,18.87 24,15C24,11.13 20.87,8 17,8Z"
+            />
+          </svg>
+
+          <div class="brand-text">
+            <h1>Sawitify</h1>
+            <p>Dashboard Mandor</p>
+          </div>
+        </div>
+
+        <div class="user">
+          <div class="user-info">
+            <strong id="mandor-name"></strong>
+            <span>Mandor</span>
+          </div>
+
+          <button class="btn-logout" onclick="logout()">Keluar</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================
+       MAIN
+  ========================= -->
+
+    <main>
+      <div class="page-header">
+        <div>
+          <h2>Penugasan Ancak</h2>
+
+          <p>Kelola pembagian ancak kepada pemanen</p>
+        </div>
+
+        <button class="btn-add" onclick="openModal('addModal')">
+          <span>+ Tambah Penugasan</span>
+          +
+        </button>
+
+        <button class="btn-add" onclick="openMonthlyReport()">
+          🖨 Laporan Bulanan
+        </button>
+      </div>
+
+      <section class="performance-section">
+        <div class="section-header">
+          <div>
+            <h2>Dashboard Performa</h2>
+            <p>Performa pemanen berdasarkan bulan</p>
+          </div>
+
+          <div class="performance-filters">
+            <input
+              type="month"
+              id="performanceMonth"
+              onchange="
+                getPerformance();
+                getMonthlyReport();
+              "
+            />
+
+            <select id="performanceWorker" onchange="getPerformance()">
+              <option value="">Semua Pemanen</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="performance-summary">
+          <div class="summary-card">
+            <span>Total Buah</span>
+            <strong id="summaryBuah">0 kg</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Total Brondol</span>
+            <strong id="summaryBrondol">0 kg</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Total Hari Kerja</span>
+            <strong id="summaryHari">0 hari</strong>
+          </div>
+        </div>
+
+        <div class="performance-table-wrapper">
+          <table class="performance-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Pemanen</th>
+                <th>Buah</th>
+                <th>Brondol</th>
+                <th>Hari</th>
+              </tr>
+            </thead>
+
+            <tbody id="performanceBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div
+        id="reportModal"
+        class="modal"
+        onclick="closeOutside(event, 'reportModal')"
+      >
+        <div class="modal-content" style="max-width: 900px">
+          <div>
+            <h2>Laporan Bulanan</h2>
+            <p id="reportPeriod">-</p>
+          </div>
+
+          <button class="close" onclick="closeModal('reportModal')">×</button>
+        </div>
+
+        <div class="report-info">
+          <div>
+            <span>Mandor</span>
+            <strong id="reportMandor">-</strong>
+          </div>
+
+          <div>
+            <span>Divisi</span>
+            <strong id="reportDivisi">-</strong>
+          </div>
+        </div>
+
+        <div class="performance-summary">...</div>
+
+        <div class="performance-table-wrapper">
+          <table class="performance-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nama</th>
+                <th>Buah</th>
+                <th>Brondol</th>
+                <th>Hari</th>
+              </tr>
+            </thead>
+            <tbody id="topWorkerBody"></tbody>
+          </table>
+        </div>
+
+        <div class="performance-table-wrapper">
+          <table class="performance-table">
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Pemanen Aktif</th>
+                <th>Buah</th>
+                <th>Brondol</th>
+              </tr>
+            </thead>
+            <tbody id="reportBody"></tbody>
+          </table>
+        </div>
+
+        <div class="signature-box">
+          <div class="signature">
+            <p>Mengetahui,</p>
+            <div class="line"></div>
+            <strong id="signatureMandor">-</strong>
+            <span>Mandor</span>
+          </div>
+        </div>
+
+        <div class="report-actions">
+          <button class="btn-submit" onclick="printMonthlyReport()">
+            🖨 Cetak PDF
+          </button>
+        </div>
+      </div>
+      <!-- =========================
+         ASSIGNMENT LIST
+    ========================= -->
+
+      <div id="assignment-list" class="assignment-list"></div>
+    </main>
+
+    <!-- ==================================================
+       DETAIL PENUGASAN
+  ================================================== -->
+
+    <div
+      id="detailModal"
+      class="modal"
+      onclick="closeOutside(event, 'detailModal')"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Penugasan Ancak</h2>
+
+            <p id="detailDate"></p>
+          </div>
+
+          <button class="close" onclick="closeModal('detailModal')">×</button>
+        </div>
+
+        <div id="assignment-detail"></div>
+      </div>
+    </div>
+
+    <!-- ==================================================
+       TAMBAH PENUGASAN
+  ================================================== -->
+
+    <div id="addModal" class="modal" onclick="closeOutside(event, 'addModal')">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Tambah Penugasan</h2>
+
+            <p>Tentukan ancak untuk setiap pemanen</p>
+          </div>
+
+          <button class="close" onclick="closeModal('addModal')">×</button>
+        </div>
+
+        <!-- TANGGAL -->
+
+        <div class="form-group">
+          <label> Tanggal Penugasan </label>
+
+          <input type="date" id="assignmentDate" />
+        </div>
+
+        <!-- PEMANEN -->
+
+        <div class="form-group">
+          <label> Daftar Pemanen </label>
+
+          <div id="workerForms">
+            <!-- WORKER FORM -->
+
+            <div class="worker-form">
+              <div class="worker-form-header">
+                <strong> Pemanen 1 </strong>
+
+                <button
+                  class="btn-remove-worker"
+                  onclick="removeWorker(this)"
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+
+              <!-- PILIH PEMANEN -->
+
+              <div class="worker-select">
+                <label> Pemanen </label>
+
+                <select class="worker-select-input" id="worker-select"></select>
+              </div>
+
+              <!-- PILIH ANCAK -->
+
+              <div>
+                <div class="ancak-select-title">Pilih Ancak</div>
+
+                <div class="ancak-options" id="ancak-options"></div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-add-worker" onclick="addWorker()">
+            + Tambah Pemanen
+          </button>
+        </div>
+
+        <button class="btn-submit" onclick="submitAssignment()">
+          Simpan Penugasan
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="editModal"
+      class="modal"
+      onclick="closeOutside(event, 'editModal')"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h2>Edit Penugasan</h2>
+            <p id="editDate"></p>
+          </div>
+
+          <button class="close" onclick="closeModal('editModal')">×</button>
+        </div>
+
+        <input type="hidden" id="editAktivitasId" />
+
+        <div class="worker-select">
+          <label>Pemanen</label>
+          <select id="editWorker" disabled></select>
+        </div>
+
+        <div>
+          <div class="ancak-select-title">Pilih Ancak</div>
+          <div id="editAncakOptions" class="ancak-options"></div>
+        </div>
+
+        <button class="btn-submit" onclick="updateAssignment()">
+          Simpan Perubahan
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================================================
+       JAVASCRIPT
+  ================================================== -->
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
+    <script src="mandor_page.js"></script>
+  </body>
+</html>
