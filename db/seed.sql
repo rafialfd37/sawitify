@@ -1,4 +1,4 @@
-INSERT INTO admin (
+INSERT INTO akun (
     id_karyawan,
     username,
     password,
