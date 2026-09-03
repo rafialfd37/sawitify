@@ -53,13 +53,13 @@ Pada sebagian banyak kasus, proses tersebut masih dilakukan secara **manual meng
 
 **Sawitify** merupakan sistem informasi operasional berbasis web yang menghubungkan administrator, mandor, dan pemanen dalam satu platform digital.
 
-Melalui sistem ini, penugasan ancak, pencatatan hasil panen, pelaporan brondolan, serta monitoring aktivitas lapangan dilakukan secara terintegrasi sehingga proses operasional menjadi lebih cepat, terstruktur, dan terdokumentasi.
+Melalui sistem ini, penugasan ancak, pencatatan hasil panen, pelaporan brondolan, serta monitoring aktivitas lapangan dilakukan secara terintegrasi sehingga proses operasional menjadi lebih cepat, terstruktur, dan terdokumentasi. Selain itu, Sawitify telah mendukung **Progressive Web App (PWA)** sehingga dapat dipasang langsung pada perangkat pengguna seperti aplikasi biasa tanpa perlu melalui app store, memberikan akses yang lebih cepat dan praktis bagi mandor maupun pemanen di lapangan.
 
 ### Tujuan Proyek
 
-- 🎯 **Tujuan Utama**: Mendigitalisasi operasional mandor dan pemanen.
-- 👥 **Target Pengguna**: Administrator, Mandor, dan Pemanen.
-- 💡 **Value Proposition**: Sistem terintegrasi yang menggantikan pencatatan manual menjadi proses digital yang lebih efisien.
+- 🎯 **Tujuan Utama:** Mendigitalisasi operasional mandor dan pemanen.
+- 👥 **Target Pengguna:** Administrator, Mandor, dan Pemanen.
+- 💡 **Value Proposition:** Sistem terintegrasi yang menggantikan pencatatan manual menjadi proses digital yang lebih efisien.
 
 ### Kontribusi terhadap SDGs
 
@@ -84,12 +84,13 @@ Sawitify dikembangkan sesuai tema **Smart Sustainable Digital Solution for Inclu
 
 ### Fitur Utama
 
-| Fitur                      | Deskripsi                                   | Keunggulan                         |
-| -------------------------- | ------------------------------------------- | ---------------------------------- |
-| **Dashboard Admin**        | Mengelola data master sistem                | Semua data terpusat                |
-| **Penugasan Ancak**        | Mandor membagikan ancak kepada pemanen      | Distribusi tugas lebih terstruktur |
-| **Pelaporan Hasil Panen**  | Pemanen menginput hasil panen dan brondolan | Data masuk secara real-time        |
-| **Monitoring Operasional** | Melihat status pekerjaan dan hasil panen    | Mempermudah pengawasan lapangan    |
+| Fitur | Deskripsi | Keunggulan |
+|--------|-----------|------------|
+| **Dashboard Admin** | Mengelola data master sistem | Semua data terpusat |
+| **Penugasan Ancak** | Mandor membagikan ancak kepada pemanen | Distribusi tugas lebih terstruktur |
+| **Pelaporan Hasil Panen** | Pemanen menginput hasil panen dan brondolan | Data masuk secara real-time |
+| **Monitoring Operasional** | Melihat status pekerjaan dan hasil panen | Mempermudah pengawasan lapangan |
+| **Progressive Web App (PWA)** | Menginstal Sawitify sebagai aplikasi di desktop maupun perangkat mobile | Akses lebih cepat tanpa melalui app store |
 
 ### Fitur Tambahan
 
@@ -99,7 +100,7 @@ Sawitify dikembangkan sesuai tema **Smart Sustainable Digital Solution for Inclu
 - **Responsive Interface**
 - **Riwayat Penugasan**
 - **Detail Hasil Panen per Ancak**
-
+- **Installable PWA** dengan tampilan aplikasi mandiri (standalone).
 ---
 
 ## 📸 Demo & Screenshot
