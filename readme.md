@@ -291,7 +291,7 @@ npm install
 
 1. Buat database PostgreSQL.
 2. Import file `schema.sql` ke database.
-3. Import `seed.sql` untuk menambahkan akses admin.
+3. Import `seed.sql` untuk menambahkan akun administrator.
 
 ### 4️⃣ Login ke Vercel
 
@@ -322,9 +322,23 @@ Saat pertama kali menjalankan perintah tersebut, pilih konfigurasi berikut:
 - **Project Name** → `sawitify`
 - **Directory** → `./`
 
-### 6️⃣ Tambahkan Environment Variables
+### 6️⃣ Setup Vercel Blob Storage
 
-Tambahkan variabel berikut melalui **Vercel Dashboard → Project Settings → Environment Variables**:
+Sawitify menggunakan **Vercel Blob** untuk menyimpan foto bukti panen.
+
+1. Buka **Vercel Dashboard**.
+2. Pilih proyek **Sawitify**.
+3. Masuk ke **Storage** → **Create Database or Storage**.
+4. Pilih **Blob**.
+5. Beri nama Blob Store (misalnya `sawitify-blob`).
+6. Pada pengaturan akses, pilih **Public** agar gambar dapat diakses melalui URL publik.
+7. Klik **Create**.
+8. Hubungkan Blob Store ke proyek Sawitify.
+9. Salin **BLOB_READ_WRITE_TOKEN** yang diberikan Vercel.
+
+### 7️⃣ Tambahkan Environment Variables
+
+Masuk ke **Vercel Dashboard → Project Settings → Environment Variables**, kemudian tambahkan:
 
 ```env
 DATABASE_URL=postgresql://username:password@host/database?sslmode=require
@@ -332,9 +346,9 @@ JWT_SECRET=your_secret_key
 BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxxxxxxxx
 ```
 
-### 7️⃣ Deploy ke Production
+### 8️⃣ Deploy ke Production
 
-Setelah environment variables selesai ditambahkan, lakukan deploy:
+Setelah seluruh environment variable selesai ditambahkan, lakukan deployment ke production:
 
 ```bash
 vercel --prod
