@@ -577,7 +577,7 @@ async function getPerformance() {
     `${result.summary.total_buah} tandan`;
 
   document.getElementById("summaryBrondol").textContent =
-    `${result.summary.total_brondol} `;
+    `${result.summary.total_brondol} ember`;
 
   document.getElementById("summaryHari").textContent =
     `${result.summary.total_hari} hari`;
@@ -596,8 +596,8 @@ async function getPerformance() {
       <tr>
         <td class="rank ${rankClass}">${index + 1}</td>
         <td>${worker.nama}</td>
-        <td>${worker.total_buah} kg</td>
-        <td>${worker.total_brondol} kg</td>
+        <td>${worker.total_buah} tandan</td>
+        <td>${worker.total_brondol} ember</td>
         <td>${worker.hari_kerja}</td>
       </tr>
     `;
