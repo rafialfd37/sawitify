@@ -336,7 +336,7 @@ function renderAssignment(data) {
             class="btn-save"
             onclick="saveResult(${item.id_detail})"
           >
-            ${item.status === "Selesai" ? "✏️ Siman Perubahan" : "💾 Simpan Hasil"}
+            ${item.status === "Selesai" ? "✏️ Simpan Perubahan" : "💾 Simpan Hasil"}
           </button>
 
         </div>
