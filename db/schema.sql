@@ -91,7 +91,7 @@ CREATE TABLE public.detail_aktivitas (
     id_aktivitas integer NOT NULL,
     id_ancak text NOT NULL,
     jumlah_buah integer DEFAULT 0,
-    jumlah_brondol integer DEFAULT 0
+    jumlah_brondol integer DEFAULT 0,
     catatan text
 );
 
