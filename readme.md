@@ -294,6 +294,10 @@ npm install
 2. Import file `schema.sql` ke database.
 3. Import `seed.sql` untuk menambahkan akun administrator.
 
+```
+Secara default, password untuk akun mandor dan pemanen adalah tanggal lahir mereka dengan format YYYY-MM-DD
+```
+
 ### 4️⃣ Login ke Vercel
 
 Install Vercel CLI:
