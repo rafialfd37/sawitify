@@ -241,8 +241,9 @@ flowchart TD
 ├── assets
 │      erd/
 │        └── sawitify-erd.png
-├── schema.sql
-├── seed.sql
+├── db
+│   ├── schema.sql
+│   └── seed.sql
 ├── manifest.webmanifest
 ├── sw.js
 ├── admin.html
